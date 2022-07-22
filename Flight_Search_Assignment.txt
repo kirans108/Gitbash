@@ -1,0 +1,64 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class FlightBooking {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "F:\\WokSpaceKk\\eee\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		
+		//RahulShetty Website --01
+		
+		driver.get("https://rahulshettyacademy.com/dropdownsPractise/");
+		driver.findElement(By.xpath("//input[@value='Search']")).click();
+		driver.findElement(By.id("ctl00_mainContent_rbtnl_Trip_0"));
+		driver.findElement(By.name("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+		driver.findElement(By.cssSelector("td[class='mapbg'] a[value='BLR']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("(//td[@class='mapbg'] //a[@value='HYD'])[2]")).click();
+		driver.findElement(By.cssSelector("a[class*=highlight]")).click();
+		driver.findElement(By.cssSelector("#divpaxinfo")).click();
+		Thread.sleep(2000);
+		int i = 1;
+		for (i = 1; i < 5; i++) {
+			driver.findElement(By.cssSelector("#hrefIncAdt")).click();
+		}
+		driver.findElement(By.cssSelector("input[value='Done']")).click();
+		WebElement staticdropdown = driver.findElement(By.id("ctl00_mainContent_DropDownListCurrency"));
+		Select dropdown = new Select(staticdropdown);
+		dropdown.selectByIndex(3);
+		driver.findElement(By.xpath("//input[@id='ctl00_mainContent_chk_friendsandfamily']")).click();
+
+		
+		
+		//Goibibo Website--02
+		driver.manage().window().maximize();
+		driver.get("https://www.goibibo.com/flights");
+		driver.findElement(By.xpath("//body/div[@id='root']/div[@class='desktop-app__wrapper padding-zero']/div[@class='header__conts']/div[@class='header__contInners']/div[@class='sc-ezbkAF lhIvhC']/div[@class='sc-bYoBSM idVdnO']/div[@class='sc-kLwhqv kUoFtj']/div[@class='sc-jrQzAO evOGjM']/ul[@class='sc-iqseJM giZLuO']/li[2]/span[2]"))
+				.click();
+		driver.findElement(By.xpath("//span[@class='sc-GEbAx izHSju']")).click();
+		driver.findElement(By.xpath("//p[@class='sc-iJKOTD iipKRx fswWidgetPlaceholder']")).click();
+		driver.findElement(By.cssSelector("input[type='text']")).sendKeys("BLR");
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector("li[tabindex='0']")).click();
+		driver.findElement(By.cssSelector("input[type='text']")).sendKeys("HYD");
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector("li[tabindex='0']")).click();
+		driver.findElement(By.cssSelector("div[class*='DayPicker-Day--today']")).click();
+		driver.findElement(By.xpath("//span[@class='fswTrvl__done']")).click();
+		Thread.sleep(3000);
+		int j = 1;
+		for (j = 1; j < 5; j++) {
+			driver.findElement(By.xpath("//div[@class='sc-cZMNgc fLZUIB']//div[1]//div[1]//span[3]//*[name()='svg']"))
+					.click();
+		}
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[@class='sc-dtMgUX daltrV']")).click();
+		driver.findElement(By.cssSelector("span[class='sc-fHeRUh jHgPBA']")).click();
+
+	}
+}
